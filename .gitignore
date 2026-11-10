@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.local
+test-results/
+# Private original FBXs and reproducible character authoring/validation evidence.
+asset-source/runner/

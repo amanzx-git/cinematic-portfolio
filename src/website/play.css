@@ -1,0 +1,119 @@
+.play-experience { margin: auto 0; padding: 42px 0; }
+.play-intro, .mode-selection { animation: opening-reveal .5s ease both; }
+.play-experience:focus { outline: none; }
+.play-intro-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .45s ease; pointer-events: none; }
+.play-intro-video.is-visible { opacity: 1; }
+.shadow-idle-video { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; pointer-events: none; }
+.shadow-idle-video.is-visible { opacity: 1; }
+/* The top layer darkens the entire application, including branding and controls.
+   It stays fully opaque while the incoming video has no renderable frame. */
+.shadow-transition { position: absolute; inset: 0; z-index: 10; background: #030507; opacity: 0; pointer-events: none; transition: opacity .45s ease; }
+[data-transition=darkening] .shadow-transition, [data-transition=waiting] .shadow-transition { opacity: 1; }
+[data-transition]:not([data-transition=ready]) .mode-selection { visibility: hidden; }
+[data-transition=ready] .mode-selection { animation: shadow-options .25s ease both; text-shadow: 0 2px 12px #000; }
+@keyframes shadow-options { from { opacity: 0; } to { opacity: 1; } }
+/* Leave the accessible heading in place, with the supplied cinematic unobscured. */
+.cinematic-copy { opacity: 0; }
+.play-intro { padding: 7vh 0; }
+.play-experience h2 { font: 400 clamp(38px, 5vw, 70px)/1.06 Georgia, 'Times New Roman', serif; letter-spacing: -.04em; margin: 0; }
+.play-experience h2 em { color: #e0c5a0; font-weight: 400; }
+.intro-captions { min-height: 80px; margin-top: 30px; color: #e0d7c7; font: 18px/1.7 Georgia, serif; }
+.intro-captions p { margin: 6px 0; }
+.intro-caption { animation: opening-reveal .6s ease both; }
+.play-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 30px; }
+.play-controls .enter-button { width: auto; min-width: 190px; gap: 20px; }
+.play-description { color: #c4cdcd; font-size: 14px; line-height: 1.7; margin: 22px 0 30px; }
+.mode-selection { width: 100%; max-width: 600px; }
+.mode-list { display: grid; border-top: 1px solid #d4cfb633; }
+.mode-option { display: grid; grid-template-columns: 24px minmax(0, 1fr) auto; gap: 16px; align-items: center; padding: 16px 12px; border-bottom: 1px solid #d4cfb62e; background: rgba(7, 16, 29, .2); transition: background-color .18s ease, border-color .18s ease; }
+.mode-option:focus-within { background: rgba(7, 16, 29, .28); border-bottom-color: #d2b78a70; }
+.play-experience:focus-visible .mode-list { border-top-color: #d2b78a70; }
+@media (hover: hover) and (pointer: fine) {
+  .mode-option:hover { background: rgba(7, 16, 29, .28); border-bottom-color: #d2b78a70; }
+}
+@media (min-width: 701px) {
+  .cinema[data-mobile=false] .mode-selection { width: min(600px, 52%); }
+}
+.mode-number { color: #c0aa8a; font-size: 10px; letter-spacing: .1em; }
+.mode-option h3 { margin: 0; font-size: 21px; font-weight: 400; color: #eee4d6; }
+.mode-option p { margin: 9px 0 0; color: #d0d2cc; font-size: 12px; line-height: 1.65; }
+.mode-status { color: #d2bc9a; font-size: 9px; text-transform: uppercase; letter-spacing: .13em; }
+.mode-note, .play-notice { color: #c4cdcd; font-size: 12px; line-height: 1.7; }
+.mode-note { margin-top: 20px; }
+@media (max-height: 850px) {
+  .play-experience[data-transition=ready] { padding: 14px 0; }
+  .mode-selection > .eyebrow { margin-bottom: 12px; }
+  .mode-selection h2 { font-size: 38px; }
+  .mode-selection .play-description { margin: 12px 0; }
+  .mode-option { padding-top: 10px; padding-bottom: 10px; }
+  .mode-option h3 { font-size: 18px; }
+  .mode-option p { margin-top: 6px; }
+  .mode-note { margin-top: 12px; }
+}
+@media (max-width: 700px) {
+  .play-experience { padding: 30px 0; }
+  .play-experience h2 { font-size: 40px; }
+  .mode-option { grid-template-columns: 22px 1fr; gap: 12px; padding: 18px 4px; }
+  .mode-status { grid-column: 2; }
+  .mode-option h3 { font-size: 20px; }
+  .play-controls { gap: 20px; }
+}
+@media (max-height: 760px) {
+  .play-experience { padding: 22px 0; }
+  .play-intro { padding: 2vh 0; }
+  .play-experience h2 { font-size: 38px; }
+  .play-description { margin: 16px 0; }
+  .mode-option { padding-top: 10px; padding-bottom: 10px; }
+  .play-controls { margin-top: 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .play-intro, .mode-selection, .intro-caption { animation: none; }
+}
+@media (orientation: landscape) {
+  .cinema[data-mobile=true] .play-experience { padding: 6px 0; }
+  .cinema[data-mobile=true] .play-intro { padding: 0; width: 58%; }
+  .cinema[data-mobile=true] .play-experience h2 { font-size: clamp(24px, 4vw, 36px); }
+  .cinema[data-mobile=true] .play-experience .eyebrow { margin-bottom: 8px; }
+  .cinema[data-mobile=true] .intro-captions { min-height: 0; margin-top: 10px; font-size: 15px; }
+  .cinema[data-mobile=true] .play-controls { margin-top: 8px; }
+  .cinema[data-mobile=true] .play-controls button { min-height: 44px; }
+  .cinema[data-mobile=true] .mode-selection { max-width: 100%; }
+  .cinema[data-mobile=true] .mode-selection h2 br { display: none; }
+  .cinema[data-mobile=true] .play-description { margin: 6px 0; font-size: 12px; }
+  .cinema[data-mobile=true] .mode-list { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .cinema[data-mobile=true] .mode-option { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; padding: 8px; }
+  .cinema[data-mobile=true] .mode-number { display: none; }
+  .cinema[data-mobile=true] .mode-option h3 { font-size: 16px; }
+  .cinema[data-mobile=true] .mode-option p { margin-top: 5px; font-size: 11px; }
+  .cinema[data-mobile=true] .mode-note { margin: 6px 0; font-size: 11px; }
+}
+.cinema[data-simplified=true] .play-experience { padding: 8px 0; }
+.cinema[data-simplified=true] .play-intro { padding: 0; }
+.cinema[data-simplified=true] .play-experience h2 { font-size: 28px; }
+.cinema[data-simplified=true] .play-experience .eyebrow { margin-bottom: 8px; }
+.cinema[data-simplified=true] .intro-captions { min-height: 0; margin-top: 12px; }
+.cinema[data-simplified=true] .play-description { margin: 8px 0; font-size: 12px; }
+.cinema[data-simplified=true] .mode-option { padding: 8px 4px; gap: 6px; }
+.cinema[data-simplified=true] .mode-option h3 { font-size: 17px; }
+.cinema[data-simplified=true] .mode-option p { margin-top: 4px; font-size: 11px; }
+.cinema[data-simplified=true] .mode-note { margin: 8px 0; }
+.cinema[data-simplified=true] .play-controls { margin-top: 8px; }
+@media (orientation: landscape) and (max-height: 360px) {
+  .cinema[data-mobile=true] .mode-selection .eyebrow { font-size: 7px; margin-bottom: 4px; }
+  .cinema[data-mobile=true] .mode-selection h2 { font-size: 24px; }
+  .cinema[data-mobile=true] .play-description { font-size: 11px; margin: 4px 0; }
+  .cinema[data-mobile=true] .mode-option { padding: 5px; gap: 3px; }
+  .cinema[data-mobile=true] .mode-option h3 { font-size: 14px; }
+  .cinema[data-mobile=true] .mode-option p { font-size: 10px; line-height: 1.4; }
+  .cinema[data-mobile=true] .mode-status { font-size: 8px; }
+  .cinema[data-mobile=true] .mode-note { margin: 4px 0; font-size: 10px; }
+}
+
+/* Genuine discrete readiness milestones, not download percentages. */
+.cinematic-loading { position: absolute; left: 6%; right: 6%; bottom: max(54px, env(safe-area-inset-bottom)); pointer-events: none; color: #e0d7c7; font-size: 10px; letter-spacing: .05em; text-shadow: 0 1px 5px #000; }
+.cinematic-loading progress { display: block; appearance: none; border: 0; width: 100%; height: 2px; margin-top: 8px; background: #ffffff25; color: #d2bc9a; }
+.cinematic-loading progress::-webkit-progress-bar { background: #ffffff25; }
+.cinematic-loading progress::-webkit-progress-value { background: #d2bc9a; }
+.cinematic-loading progress::-moz-progress-bar { background: #d2bc9a; }
+.cinematic-skip { animation: shadow-options .25s ease both; }
+@media (prefers-reduced-motion: reduce) { .cinematic-skip { animation: none; } }

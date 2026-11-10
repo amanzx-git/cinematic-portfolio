@@ -1,0 +1,21 @@
+:root { font-family: Inter, system-ui, sans-serif; color: #e2e8ef; background: #0b1017; font-synthesis: none; color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { max-width: 1500px; margin: auto; padding: 32px; }
+header, aside, footer { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+header { margin-bottom: 24px; }
+small { font-size: 10px; letter-spacing: .16em; color: #91a3b7; }
+h1 { font-size: clamp(22px, 3vw, 34px); font-weight: 500; margin: 8px 0 0; }
+.badge { border: 1px solid #384d61; padding: 10px 14px; color: #a3d8ef; }
+.viewport { height: min(64vh, 720px); min-height: 260px; background: #111822; border: 1px solid #293542; }
+aside { flex-wrap: wrap; padding: 24px 0; border-bottom: 1px solid #293542; }
+aside div { display: grid; gap: 5px; }
+aside span, footer { color: #91a3b7; font-size: 12px; }
+label { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+select { padding: 8px 12px; background: #182330; border: 1px solid #405268; border-radius: 4px; }
+a { color: #a3d8ef; font-size: 13px; }
+output { display: block; font: 12px ui-monospace, monospace; color: #a3d8ef; margin-top: 20px; min-height: 16px; }
+footer { margin-top: 24px; flex-wrap: wrap; }
+.message { padding: 24px; }
+:focus-visible { outline: 2px solid #a3d8ef; outline-offset: 4px; }
+@media (max-width: 600px) { main { padding: 18px; } aside { gap: 20px; } .viewport { height: 52vh; } }

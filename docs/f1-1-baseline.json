@@ -1,0 +1,615 @@
+{
+  "status": "passed",
+  "recordedAt": "2026-11-10T09:19:05.817Z",
+  "origin": "http://127.0.0.1:4173",
+  "browser": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/157.0.8103.39",
+    "revision": "@9a31f0acec1854d44e49a73fbf8017598151a583",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+    "jsVersion": "15.7.112.23"
+  },
+  "graphics": {
+    "angleRenderer": "ANGLE (AMD, AMD Radeon(TM) Graphics (0x00001638) Direct3D11 vs_5_0 ps_5_0, D3D11-31.0.21921.3001)",
+    "devices": [
+      {
+        "name": "AMD Radeon(TM) Graphics",
+        "driver": "31.0.21921.3001"
+      },
+      {
+        "name": "NVIDIA GeForce GTX 1650",
+        "driver": "32.0.15.5599"
+      },
+      {
+        "name": "Microsoft Basic Render Driver",
+        "driver": "10.0.26100.9711"
+      }
+    ],
+    "webgl": "enabled",
+    "webgpu": "enabled"
+  },
+  "startup": [
+    {
+      "backend": "WebGPU",
+      "quality": "Balanced",
+      "drift": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "canvasCSS": {
+        "width": 1374,
+        "height": 689
+      },
+      "drawingBuffer": {
+        "width": 2061,
+        "height": 1033
+      },
+      "deviceDPR": 1.5,
+      "actualDPR": 1.5,
+      "visibility": "visible",
+      "diagnostics": "56 FPS · 17.9 ms · DPR 1.50 · 1374 × 689.1875",
+      "backendReadyMs": 945.7999999523163,
+      "canvasAttachedMs": 967.1000000238419,
+      "first5Seconds": {
+        "frames": 171,
+        "durationMs": 4884,
+        "meanFPS": 35.01228501228501,
+        "medianMs": 16.90000000000009,
+        "p95Ms": 58.30000000000001,
+        "p99Ms": 266.5,
+        "maxMs": 533.3999999999999,
+        "over16_7": 98,
+        "over33_3": 33,
+        "onePercentLowFPS": 2.5003125390673837
+      },
+      "warmup5To15Seconds": {
+        "frames": 562,
+        "durationMs": 10016,
+        "meanFPS": 56.11022364217252,
+        "medianMs": 16.69999999999891,
+        "p95Ms": 33.399999999999636,
+        "p99Ms": 41.70000000000073,
+        "maxMs": 58.19999999999982,
+        "over16_7": 240,
+        "over33_3": 41,
+        "onePercentLowFPS": 21.83406113537102
+      },
+      "longTasks": [
+        {
+          "startTime": 322.7999999523163,
+          "duration": 169
+        },
+        {
+          "startTime": 510.5,
+          "duration": 73
+        },
+        {
+          "startTime": 997.6000000238419,
+          "duration": 226
+        }
+      ]
+    },
+    {
+      "backend": "WebGL 2",
+      "quality": "Balanced",
+      "drift": true,
+      "viewport": {
+        "width": 1440,
+        "height": 1080
+      },
+      "canvasCSS": {
+        "width": 1374,
+        "height": 689
+      },
+      "drawingBuffer": {
+        "width": 2061,
+        "height": 1033
+      },
+      "deviceDPR": 1.5,
+      "actualDPR": 1.5,
+      "visibility": "visible",
+      "diagnostics": "94 FPS · 10.7 ms · DPR 1.50 · 1374 × 689.1875",
+      "backendReadyMs": 84.90000009536743,
+      "canvasAttachedMs": 93.80000007152557,
+      "first5Seconds": {
+        "frames": 284,
+        "durationMs": 4949.9,
+        "meanFPS": 57.3748964625548,
+        "medianMs": 16.699999999999818,
+        "p95Ms": 25.200000000000273,
+        "p99Ms": 34.400000000000546,
+        "maxMs": 141.60000000000002,
+        "over16_7": 125,
+        "over33_3": 5,
+        "onePercentLowFPS": 13.774104683195558
+      },
+      "warmup5To15Seconds": {
+        "frames": 884,
+        "durationMs": 10000.1,
+        "meanFPS": 88.39911600883991,
+        "medianMs": 8.399999999999636,
+        "p95Ms": 16.800000000000182,
+        "p99Ms": 17.100000000000364,
+        "maxMs": 41.79999999999927,
+        "over16_7": 112,
+        "over33_3": 1,
+        "onePercentLowFPS": 38.412291933418665
+      },
+      "longTasks": [
+        {
+          "startTime": 103.80000007152557,
+          "duration": 135
+        }
+      ]
+    }
+  ],
+  "samples": [
+    {
+      "context": {
+        "backend": "WebGPU",
+        "quality": "Balanced",
+        "drift": false,
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "canvasCSS": {
+          "width": 1374,
+          "height": 689
+        },
+        "drawingBuffer": {
+          "width": 2061,
+          "height": 1033
+        },
+        "deviceDPR": 1.5,
+        "actualDPR": 1.5,
+        "visibility": "visible",
+        "diagnostics": "92 FPS · 10.9 ms · DPR 1.50 · 1374 × 689.1875"
+      },
+      "warmup": {
+        "label": "auto drift false: material warmup",
+        "requestedDurationMs": 5000,
+        "observedDurationMs": 5012.800000071526,
+        "stats": {
+          "frames": 298,
+          "durationMs": 5016.699999999999,
+          "meanFPS": 59.40159866047403,
+          "medianMs": 16.69999999999709,
+          "p95Ms": 33.29999999999927,
+          "p99Ms": 41.70000000000073,
+          "maxMs": 49.89999999999782,
+          "over16_7": 135,
+          "over33_3": 9,
+          "onePercentLowFPS": 22.505626406601774
+        },
+        "mainThreadMs": {
+          "TaskDuration": 635.7850000000003,
+          "ScriptDuration": 422.288,
+          "LayoutDuration": 4.794000000000007,
+          "RecalcStyleDuration": 1.1039999999999974
+        },
+        "longTasks": []
+      },
+      "steady": {
+        "label": "auto drift false: steady state",
+        "requestedDurationMs": 30000,
+        "observedDurationMs": 30008.799999952316,
+        "stats": {
+          "frames": 1785,
+          "durationMs": 30008.5,
+          "meanFPS": 59.48314644184148,
+          "medianMs": 16.599999999998545,
+          "p95Ms": 33.400000000001455,
+          "p99Ms": 42,
+          "maxMs": 66.59999999999854,
+          "over16_7": 688,
+          "over33_3": 117,
+          "onePercentLowFPS": 19.402824188854062
+        },
+        "mainThreadMs": {
+          "TaskDuration": 4196.890999999999,
+          "ScriptDuration": 2696.555,
+          "LayoutDuration": 33.285999999999994,
+          "RecalcStyleDuration": 6.858000000000003
+        },
+        "longTasks": []
+      }
+    },
+    {
+      "context": {
+        "backend": "WebGPU",
+        "quality": "Balanced",
+        "drift": true,
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "canvasCSS": {
+          "width": 1374,
+          "height": 689
+        },
+        "drawingBuffer": {
+          "width": 2061,
+          "height": 1033
+        },
+        "deviceDPR": 1.5,
+        "actualDPR": 1.5,
+        "visibility": "visible",
+        "diagnostics": "85 FPS · 11.8 ms · DPR 1.50 · 1374 × 689.1875"
+      },
+      "warmup": {
+        "label": "auto drift true: material warmup",
+        "requestedDurationMs": 5000,
+        "observedDurationMs": 5005.5,
+        "stats": {
+          "frames": 408,
+          "durationMs": 5008.0999999999985,
+          "meanFPS": 81.46802180467645,
+          "medianMs": 8.400000000001455,
+          "p95Ms": 24.80000000000291,
+          "p99Ms": 25.099999999998545,
+          "maxMs": 41.5,
+          "over16_7": 65,
+          "over33_3": 2,
+          "onePercentLowFPS": 31.505986137365234
+        },
+        "mainThreadMs": {
+          "TaskDuration": 736.9380000000003,
+          "ScriptDuration": 468.8080000000001,
+          "LayoutDuration": 3.225000000000006,
+          "RecalcStyleDuration": 0.7109999999999999
+        },
+        "longTasks": []
+      },
+      "steady": {
+        "label": "auto drift true: steady state",
+        "requestedDurationMs": 30000,
+        "observedDurationMs": 30001.5,
+        "stats": {
+          "frames": 2664,
+          "durationMs": 29983.499999999993,
+          "meanFPS": 88.84886687678225,
+          "medianMs": 8.39999999999418,
+          "p95Ms": 16.80000000000291,
+          "p99Ms": 25.10000000000582,
+          "maxMs": 41.5,
+          "over16_7": 244,
+          "over33_3": 12,
+          "onePercentLowFPS": 31.428238854614015
+        },
+        "mainThreadMs": {
+          "TaskDuration": 3787.6930000000007,
+          "ScriptDuration": 2415.2019999999998,
+          "LayoutDuration": 19.01900000000001,
+          "RecalcStyleDuration": 4.130000000000002
+        },
+        "longTasks": []
+      }
+    },
+    {
+      "context": {
+        "backend": "WebGPU",
+        "quality": "Low",
+        "drift": true,
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "canvasCSS": {
+          "width": 1374,
+          "height": 689
+        },
+        "drawingBuffer": {
+          "width": 1374,
+          "height": 689
+        },
+        "deviceDPR": 1.5,
+        "actualDPR": 1,
+        "visibility": "visible",
+        "diagnostics": "120 FPS · 8.3 ms · DPR 1.00 · 1374 × 689.1875"
+      },
+      "warmup": {
+        "label": "auto Low: resize/material warmup",
+        "requestedDurationMs": 5000,
+        "observedDurationMs": 5001.299999952316,
+        "stats": {
+          "frames": 599,
+          "durationMs": 5008.199999999997,
+          "meanFPS": 119.60384968651418,
+          "medianMs": 8.30000000000291,
+          "p95Ms": 8.400000000008731,
+          "p99Ms": 8.5,
+          "maxMs": 16.69999999999709,
+          "over16_7": 0,
+          "over33_3": 0,
+          "onePercentLowFPS": 88.75739644967739
+        },
+        "mainThreadMs": {
+          "TaskDuration": 489.52599999999967,
+          "ScriptDuration": 320.0419999999999,
+          "LayoutDuration": 1.8799999999999928,
+          "RecalcStyleDuration": 0.42299999999999977
+        },
+        "longTasks": []
+      },
+      "steady": {
+        "label": "auto Low: steady state",
+        "requestedDurationMs": 15000,
+        "observedDurationMs": 15004.399999976158,
+        "stats": {
+          "frames": 1800,
+          "durationMs": 15000.100000000006,
+          "meanFPS": 119.99920000533325,
+          "medianMs": 8.30000000000291,
+          "p95Ms": 8.400000000008731,
+          "p99Ms": 8.5,
+          "maxMs": 8.69999999999709,
+          "over16_7": 0,
+          "over33_3": 0,
+          "onePercentLowFPS": 117.26384364820846
+        },
+        "mainThreadMs": {
+          "TaskDuration": 1392.3290000000002,
+          "ScriptDuration": 906.4580000000007,
+          "LayoutDuration": 5.850000000000022,
+          "RecalcStyleDuration": 1.0850000000000026
+        },
+        "longTasks": []
+      }
+    },
+    {
+      "context": {
+        "backend": "WebGL 2",
+        "quality": "Balanced",
+        "drift": true,
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "canvasCSS": {
+          "width": 1374,
+          "height": 689
+        },
+        "drawingBuffer": {
+          "width": 2061,
+          "height": 1033
+        },
+        "deviceDPR": 1.5,
+        "actualDPR": 1.5,
+        "visibility": "visible",
+        "diagnostics": "93 FPS · 10.8 ms · DPR 1.50 · 1374 × 689.1875"
+      },
+      "warmup": {
+        "label": "webgl drift true: material warmup",
+        "requestedDurationMs": 5000,
+        "observedDurationMs": 5002.899999976158,
+        "stats": {
+          "frames": 423,
+          "durationMs": 5008.200000000001,
+          "meanFPS": 84.46148316760511,
+          "medianMs": 8.400000000001455,
+          "p95Ms": 16.799999999999272,
+          "p99Ms": 25,
+          "maxMs": 25.100000000000364,
+          "over16_7": 75,
+          "over33_3": 0,
+          "onePercentLowFPS": 39.93610223642207
+        },
+        "mainThreadMs": {
+          "TaskDuration": 622.4600000000003,
+          "ScriptDuration": 399.81100000000015,
+          "LayoutDuration": 2.3240000000000016,
+          "RecalcStyleDuration": 0.5629999999999997
+        },
+        "longTasks": []
+      },
+      "steady": {
+        "label": "webgl drift true: steady state",
+        "requestedDurationMs": 30000,
+        "observedDurationMs": 30007.600000023842,
+        "stats": {
+          "frames": 2539,
+          "durationMs": 30016.9,
+          "meanFPS": 84.58568339835226,
+          "medianMs": 8.400000000001455,
+          "p95Ms": 16.89999999999418,
+          "p99Ms": 25.099999999998545,
+          "maxMs": 34.099999999998545,
+          "over16_7": 416,
+          "over33_3": 5,
+          "onePercentLowFPS": 36.83763105695611
+        },
+        "mainThreadMs": {
+          "TaskDuration": 3434.43,
+          "ScriptDuration": 2261.8409999999994,
+          "LayoutDuration": 19.998,
+          "RecalcStyleDuration": 4.289
+        },
+        "longTasks": []
+      }
+    },
+    {
+      "context": {
+        "backend": "WebGL 2",
+        "quality": "Balanced",
+        "drift": false,
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "canvasCSS": {
+          "width": 1374,
+          "height": 689
+        },
+        "drawingBuffer": {
+          "width": 2061,
+          "height": 1033
+        },
+        "deviceDPR": 1.5,
+        "actualDPR": 1.5,
+        "visibility": "visible",
+        "diagnostics": "86 FPS · 11.6 ms · DPR 1.50 · 1374 × 689.1875"
+      },
+      "warmup": {
+        "label": "webgl drift false: material warmup",
+        "requestedDurationMs": 5000,
+        "observedDurationMs": 5003.700000047684,
+        "stats": {
+          "frames": 394,
+          "durationMs": 5008.299999999996,
+          "meanFPS": 78.6694087814229,
+          "medianMs": 8.5,
+          "p95Ms": 17.200000000004366,
+          "p99Ms": 25.10000000000582,
+          "maxMs": 58.299999999995634,
+          "over16_7": 74,
+          "over33_3": 1,
+          "onePercentLowFPS": 29.87303958177712
+        },
+        "mainThreadMs": {
+          "TaskDuration": 660.6719999999999,
+          "ScriptDuration": 437.4210000000005,
+          "LayoutDuration": 4.956000000000002,
+          "RecalcStyleDuration": 0.954
+        },
+        "longTasks": []
+      },
+      "steady": {
+        "label": "webgl drift false: steady state",
+        "requestedDurationMs": 30000,
+        "observedDurationMs": 30007.200000047684,
+        "stats": {
+          "frames": 2389,
+          "durationMs": 30008.40000000001,
+          "meanFPS": 79.61104224150569,
+          "medianMs": 8.400000000008731,
+          "p95Ms": 24.70000000001164,
+          "p99Ms": 25.20000000001164,
+          "maxMs": 316.70000000001164,
+          "over16_7": 360,
+          "over33_3": 8,
+          "onePercentLowFPS": 22.5818592397437
+        },
+        "mainThreadMs": {
+          "TaskDuration": 3683.33,
+          "ScriptDuration": 2377.2959999999994,
+          "LayoutDuration": 22.557000000000002,
+          "RecalcStyleDuration": 5.814999999999999
+        },
+        "longTasks": []
+      }
+    },
+    {
+      "context": {
+        "backend": "WebGL 2",
+        "quality": "Low",
+        "drift": true,
+        "viewport": {
+          "width": 1440,
+          "height": 1080
+        },
+        "canvasCSS": {
+          "width": 1374,
+          "height": 689
+        },
+        "drawingBuffer": {
+          "width": 1374,
+          "height": 689
+        },
+        "deviceDPR": 1.5,
+        "actualDPR": 1,
+        "visibility": "visible",
+        "diagnostics": "118 FPS · 8.5 ms · DPR 1.00 · 1374 × 689.1875"
+      },
+      "warmup": {
+        "label": "webgl Low: resize/material warmup",
+        "requestedDurationMs": 5000,
+        "observedDurationMs": 5004.700000047684,
+        "stats": {
+          "frames": 599,
+          "durationMs": 5024.800000000003,
+          "meanFPS": 119.20872472536213,
+          "medianMs": 8.30000000000291,
+          "p95Ms": 8.400000000008731,
+          "p99Ms": 8.80000000000291,
+          "maxMs": 24.69999999999709,
+          "over16_7": 2,
+          "over33_3": 0,
+          "onePercentLowFPS": 70.17543859647928
+        },
+        "mainThreadMs": {
+          "TaskDuration": 537.5250000000004,
+          "ScriptDuration": 346.0220000000005,
+          "LayoutDuration": 1.8880000000000008,
+          "RecalcStyleDuration": 0.37500000000000033
+        },
+        "longTasks": []
+      },
+      "steady": {
+        "label": "webgl Low: steady state",
+        "requestedDurationMs": 15000,
+        "observedDurationMs": 15003.400000095367,
+        "stats": {
+          "frames": 1720,
+          "durationMs": 15008.600000000006,
+          "meanFPS": 114.60096211505399,
+          "medianMs": 8.30000000000291,
+          "p95Ms": 8.89999999999418,
+          "p99Ms": 16.69999999999709,
+          "maxMs": 25,
+          "over16_7": 15,
+          "over33_3": 0,
+          "onePercentLowFPS": 57.72931366259022
+        },
+        "mainThreadMs": {
+          "TaskDuration": 2911.3159999999993,
+          "ScriptDuration": 1869.2709999999995,
+          "LayoutDuration": 12.022000000000006,
+          "RecalcStyleDuration": 2.5669999999999997
+        },
+        "longTasks": []
+      }
+    }
+  ],
+  "emptyTabControl": {
+    "browser": {
+      "protocolVersion": "1.3",
+      "product": "Chrome/157.0.8103.39",
+      "revision": "@9a31f0acec1854d44e49a73fbf8017598151a583",
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+      "jsVersion": "15.7.112.23"
+    },
+    "steady": {
+      "label": "empty tab: scheduling control",
+      "requestedDurationMs": 30000,
+      "observedDurationMs": 30004,
+      "stats": {
+        "frames": 3566,
+        "durationMs": 30000.100000000002,
+        "meanFPS": 118.86627044576517,
+        "medianMs": 8.300000000001091,
+        "p95Ms": 8.5,
+        "p99Ms": 9,
+        "maxMs": 17.400000000001455,
+        "over16_7": 3,
+        "over33_3": 0,
+        "onePercentLowFPS": 62.3268698060952
+      },
+      "mainThreadMs": {
+        "TaskDuration": 634.5989999999999,
+        "ScriptDuration": 75.06299999999999,
+        "LayoutDuration": 0,
+        "RecalcStyleDuration": 0
+      },
+      "longTasks": []
+    }
+  },
+  "errors": [],
+  "limitations": [
+    "Headless production samples; attempted headed sample rejected after tab became hidden.",
+    "Browser profile and shader caches not reset. No GPU timestamps or CPU stack trace collected.",
+    "ANGLE identifies the WebGL renderer, not necessarily the WebGPU adapter.",
+    "No direct performance improvement comparison against F1: earlier environment and sampling differed."
+  ]
+}
