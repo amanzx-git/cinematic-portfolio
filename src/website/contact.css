@@ -1,0 +1,41 @@
+.contact-transmission { position: relative; isolation: isolate; flex: 1; padding: 64px 0 32px; --story-progress: 0; }
+.contact-room { position: absolute; z-index: -1; inset: -220px -5vw -100px; overflow: hidden; pointer-events: none; background: radial-gradient(ellipse at 80% 30%, #415f784d, transparent 60%), linear-gradient(135deg, #263d54, #142535 65%, #0c1724); }
+.contact-room-frames { position: absolute; inset: 12% 8% -8%; border: 1px solid #adc7d922; box-shadow: 0 0 0 50px #09152222, inset 0 0 0 40px #09152233; transform: translateY(calc(var(--story-progress) * -26px)); }
+.contact-room-frames::after { content: ''; position: absolute; inset: 10% 6%; border-left: 1px solid #adc7d92b; border-right: 1px solid #adc7d92b; }
+.contact-signals { position: absolute; inset: 0; width: 100%; height: 100%; fill: none; stroke: #b2cadc; stroke-width: 1; stroke-dasharray: 100 900; opacity: .16; animation: contact-signal 18s linear infinite; transform: translateY(calc(var(--story-progress) * -12px)); }
+.contact-heading, .contact-terminal { animation: contact-enter .45s ease-out both; }
+.contact-heading .eyebrow { color: #b2cadc; }
+.contact-heading h1 { color: #f0f4f6; }
+.contact-heading > p:last-child { color: #c4d3df; font-size: 15px; line-height: 1.8; margin: 24px 0 40px; }
+.contact-terminal { max-width: 900px; margin-bottom: 44px; border-top: 1px solid #adc7d966; border-bottom: 1px solid #adc7d933; background: #0d1e2de8; padding: clamp(24px, 4vw, 48px); }
+.contact-terminal { box-shadow: 24px 24px 0 #07131d26; }
+.contact-transmission[data-motion=on] [data-story-chapter] { opacity: .3; transform: translateY(12px); transition: opacity .45s, transform .45s; }
+.contact-transmission[data-motion=on] .is-revealed, .contact-transmission[data-motion=on] [data-story-chapter]:focus-within { opacity: 1; transform: none; }
+.contact-email-channel h2 { font: 400 11px/1.6 'Courier New', monospace; text-transform: uppercase; letter-spacing: .16em; color: #b2cadc; margin: 0 0 18px; }
+.contact-address { font: 400 clamp(20px, 3vw, 34px)/1.5 'Courier New', monospace; color: #eff5f8; margin: 0 0 28px; overflow-wrap: anywhere; user-select: text; }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.contact-actions a, .contact-actions button { display: inline-flex; align-items: center; justify-content: space-between; gap: 32px; min-height: 46px; padding: 12px 20px; border: 1px solid #adc7d966; background: transparent; color: #e0e8ec; font: 12px/1.5 Arial, sans-serif; text-decoration: none; cursor: pointer; transition: background .2s, border-color .2s; }
+.contact-actions .contact-email-action { background: #d5e3ec; color: #142535; border-color: #d5e3ec; }
+.contact-actions button:disabled { opacity: .65; cursor: wait; }
+.contact-actions a:hover, .contact-actions button:hover { background: #35536b; color: #fff; border-color: #d5e3ec; }
+.contact-transmission a:focus-visible, .contact-transmission button:focus-visible { outline: 2px solid #edf4f8; outline-offset: 5px; }
+.contact-feedback { min-height: 3em; max-width: 520px; font-size: 12px; line-height: 1.6; color: #e0c5a0; margin: 16px 0 20px; }
+.contact-profile-channels { display: flex; gap: 32px; border-top: 1px solid #adc7d92b; padding-top: 24px; }
+.contact-profile-channels a { flex: 1; display: flex; flex-direction: column; gap: 10px; padding: 8px 0; color: #e0e8ec; text-decoration: none; font-size: 14px; }
+.contact-profile-channels a:hover > span:first-child { text-decoration: underline; text-underline-offset: 5px; }
+.contact-profile-channels a > span:nth-child(2) { color: #b2cadc; font-size: 12px; overflow-wrap: anywhere; }
+.contact-profile-channels .contact-new-tab { color: #b2cadc; font-size: 10px; }
+@keyframes contact-signal { to { stroke-dashoffset: -1000; } }
+@keyframes contact-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (max-width: 600px) {
+  .contact-transmission { padding-top: 42px; }
+  .contact-profile-channels { flex-direction: column; gap: 20px; }
+  .contact-room-frames { inset: 16% 5% -8%; box-shadow: none; }
+  .contact-signals { opacity: .1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .contact-transmission[data-motion=on] [data-story-chapter] { opacity: 1; transform: none; transition: none; }
+  .contact-heading, .contact-terminal, .contact-signals { animation: none; }
+  .contact-room-frames, .contact-signals { transform: none; }
+  .contact-actions a, .contact-actions button { transition: none; }
+}

@@ -1,0 +1,16 @@
+{
+  "binaryLength": 1897952,
+  "binaryHash": "c1a1f9de72c3d4ee171d6a1cf5cc8c8d1db97ecc8d59115b02d97c22c4387555",
+  "accessors": 776,
+  "bufferViews": 776,
+  "structures": {
+    "animations": "d21fc0f455985f2da02e10bd083dc98ea6b61e5d43a6b6cad69e55fc39e898f0",
+    "accessors": "106c508a75e84b47f047d7ebe08eff7b3838c0faeb135a19ddc36eaff89a422a",
+    "bufferViews": "5187137f685fbb793be6d2fb179882b7da6e2a44fcf62babedd01861177a6f41",
+    "meshes": "31a42bc46f1ce0b612e6ec2055caf7021eb9c3b7b327047a6c2d09acab36e3d7",
+    "materials": "af2c11b6b7862d615f71ffaecb8219c8b3df6a936f785fc4df1ad7a20f29db9a",
+    "skins": "be73505d34bfd3c5c80122d7500997d50cc9cc2ea8675c6bba83da3955e483cf",
+    "nodes": "98fed4a643cf7ac8cc596025efab5b46fc6504704f3932561e6b01da1a27e3a6",
+    "scenes": "a8bd569e57dcec0db703ae60abec1c82718091a0bc6f0244123864c93aba5c07"
+  }
+}

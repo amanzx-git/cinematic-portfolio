@@ -1,0 +1,22 @@
+.section-foundation { flex: 1; display: flex; flex-direction: column; padding: 42px 0 64px; }
+.section-navigation { display: flex; flex-wrap: wrap; gap: 14px 32px; border-bottom: 1px solid #dce8ed30; padding: 0 0 22px; }
+.section-navigation a { color: #adbcc5; text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: .16em; padding: 12px 0; transition: color .18s ease; }
+.section-navigation a:hover, .section-navigation a[aria-current=page] { color: #fff; }
+.section-copy { width: min(650px, 100%); margin: auto 0; padding: 64px 0; }
+.section-copy h1 { color: #f3f5f5; }
+.section-description { color: #c4d0d6; max-width: 440px; line-height: 1.9; font-size: 15px; margin: 30px 0 42px; }
+.section-home { color: #e0e8ec; text-decoration: none; border-bottom: 1px solid #c4d0d655; padding-bottom: 8px; font-size: 12px; }
+@media (max-width: 600px) { .section-navigation { gap: 8px 22px; } .section-foundation { padding-top: 26px; } .section-copy { padding: 48px 0; } }
+@media (prefers-reduced-motion: reduce) { .section-navigation a { transition: none; } }
+
+/* Shared editorial scale across the city destinations. */
+.cinema[data-section] :is(.skills-heading, .projects-heading, .contact-heading) h1 { font-size: clamp(42px, 5.8vw, 82px); line-height: 1.04; letter-spacing: -.045em; text-wrap: balance; }
+.cinema[data-section] :is(.skills-heading, .projects-heading, .contact-heading) > p:last-child { max-width: 48ch; line-height: 1.9; color: #c4d3df; }
+.cinema[data-section] :is(.skills-heading, .projects-heading, .contact-heading) .eyebrow { letter-spacing: .23em; font-size: 10px; }
+.cinema[data-section] .section-home { display: inline-block; min-height: 44px; padding: 12px 0; letter-spacing: .05em; transition: color .2s, border-color .2s; }
+.cinema[data-section] .section-home:hover { color: #fff; border-color: #e0c5a0; }
+.cinema[data-section] :is(h1, h2) { text-wrap: balance; }
+.cinema[data-section] :is(.skills-systems, .projects-city, .contact-transmission) { padding-top: clamp(32px, 5vh, 72px); }
+@media (max-width: 600px) {
+  .cinema[data-section] :is(.skills-heading, .projects-heading, .contact-heading) h1 { font-size: clamp(36px, 9vw, 54px); }
+}

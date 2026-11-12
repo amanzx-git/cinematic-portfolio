@@ -1,0 +1,22 @@
+.route-curtain { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; background: #080e14; color: #d9e3e9; font: .85rem Arial, sans-serif; opacity: 0; pointer-events: none; transition: opacity 180ms ease; }
+.route-curtain[data-phase=loading] { opacity: 1; pointer-events: auto; }
+.route-message { display: grid; justify-items: center; gap: 18px; padding: 32px; text-align: center; }
+.route-message p { margin: 0; letter-spacing: .06em; }
+.route-message a, .route-message button { color: #e7edf0; font: inherit; background: transparent; border: 1px solid #61717d; padding: 12px 20px; text-decoration: none; }
+.route-emblem { position: relative; display: block; width: 52px; height: 52px; color: #b4c9d5; }
+.route-emblem::before, .route-emblem::after { content: ''; position: absolute; }
+[data-identity=motion] .route-emblem::before { inset: 12px 4px; border-top: 2px solid; border-bottom: 2px solid; transform: skewX(-28deg); animation: route-motion 1s ease-in-out infinite alternate; }
+[data-identity=motion] .route-emblem::after { top: 25px; left: 8px; width: 30px; border-top: 1px solid; }
+[data-identity=scan] .route-emblem { border: 1px solid #526675; border-radius: 50%; }
+[data-identity=scan] .route-emblem::before { inset: 12px 18px; border: 1px solid; border-radius: 50% 50% 30% 30%; }
+[data-identity=scan] .route-emblem::after { left: 0; right: 0; top: 12px; border-top: 1px solid #eef5f7; animation: route-scan 1.2s linear infinite alternate; }
+[data-identity=system] .route-emblem { background: repeating-linear-gradient(0deg, transparent 0 10px, #b4c9d5 10px 12px, transparent 12px 17px); animation: route-signal 1s ease-in-out infinite alternate; }
+[data-identity=blueprint] .route-emblem { border: 1px solid #7996a8; background: repeating-linear-gradient(0deg, transparent 0 12px, #526675 12px 13px), repeating-linear-gradient(90deg, transparent 0 12px, #526675 12px 13px); }
+[data-identity=blueprint] .route-emblem::before { inset: 13px 13px 0; border: 1px solid #d8e8f0; }
+[data-identity=signal] .route-emblem { border: 1px solid #7996a8; border-radius: 50%; animation: route-signal 1.1s ease-in-out infinite alternate; }
+[data-identity=signal] .route-emblem::before { inset: 10px; border: 1px solid; border-radius: 50%; }
+[data-identity=signal] .route-emblem::after { inset: 22px; background: currentColor; border-radius: 50%; }
+@keyframes route-motion { to { translate: 8px 0; opacity: .4; } }
+@keyframes route-scan { to { translate: 0 28px; } }
+@keyframes route-signal { to { opacity: .3; scale: .92; } }
+@media (prefers-reduced-motion: reduce) { .route-curtain { transition: none; } .route-emblem, .route-emblem::before, .route-emblem::after { animation: none !important; } }

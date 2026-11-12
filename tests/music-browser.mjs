@@ -52,7 +52,7 @@ try {
   await page.evaluate("document.querySelector('.play-controls .enter-button').click()")
   await until("document.querySelector('main').dataset.state==='MODE_SELECTION'")
   assert.equal(await page.evaluate("window.__musicElement===document.querySelector('audio')"), true)
-  assert.equal(await page.evaluate("window.__musicPlays.length"), 1, 'navigation never recreates or restarts the track')
+  assert.equal(await page.evaluate("window.__musicPlays.length"), 2, 'mode selection resumes the same ambient element')
   await key('Escape')
   await page.evaluate("document.querySelector('[aria-label=\"Mute audio\"]').focus()")
   await key('Enter')

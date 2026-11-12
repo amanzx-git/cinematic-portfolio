@@ -1,0 +1,66 @@
+.cinema[data-section=about] { overflow: clip; background: #152535; }
+.cinema[data-section=about] .section-foundation { padding-bottom: 0; }
+.cinema[data-section=about] .section-navigation { position: relative; }
+.about-story { position: relative; --story-progress: 0; }
+.about-city { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: #233a50; }
+.about-sky { position: absolute; inset: 0; background: linear-gradient(180deg, #4b657b, #263d54 57%, #182a3c); }
+.about-city-layer { position: absolute; left: -4%; right: -4%; top: 0; will-change: transform; }
+.about-city-far { bottom: -8vh; color: #526c83; transform: translate3d(calc(var(--story-progress) * -.7vw), calc(var(--story-progress) * -6vh), 0); }
+.about-city-middle { bottom: -16vh; color: #2e465e; transform: translate3d(calc(var(--story-progress) * -1.5vw), calc(var(--story-progress) * -12vh), 0); }
+.about-city-near { bottom: -32vh; color: #0c1724; transform: translate3d(calc(var(--story-progress) * -2.5vw), calc(var(--story-progress) * -18vh), 0); }
+.about-tower { position: absolute; bottom: 0; background: currentColor; }
+.about-tower-1 { clip-path: polygon(0 9%, 16% 9%, 16% 0, 82% 0, 82% 9%, 100% 9%, 100% 100%, 0 100%); }
+.about-tower-2 { clip-path: polygon(0 0, 66% 0, 66% 13%, 100% 13%, 100% 100%, 0 100%); }
+.about-city-middle .about-tower::after { content: ''; position: absolute; top: 12%; left: 18%; width: 1px; height: 66%; background: #b1c5d31a; }
+.about-city-light { position: absolute; inset: 0; background: linear-gradient(90deg, #0c182bd9, #10213775 59%, #172a3a12), linear-gradient(0deg, #080f1b99, transparent 65%); opacity: calc(.78 + var(--story-progress) * .2); }
+.about-chapter { min-height: 100svh; display: flex; align-items: center; padding: 70px 140px 90px 0; scroll-margin-top: 28px; }
+.about-chapter:first-of-type { min-height: calc(100svh - 185px); }
+.about-chapter-copy { max-width: 670px; }
+.about-chapter { scroll-margin-top: 110px; }
+.about-chapter-copy { border-left: 1px solid #b2cadc3b; padding-left: clamp(20px, 3vw, 42px); }
+.about-body { text-wrap: pretty; }
+.about-city-light { background: linear-gradient(90deg, #0c182be8, #10213775 65%, #172a3a12), linear-gradient(0deg, #080f1b99, transparent 65%); }
+.about-chapter-label { margin: 0 0 30px; font: 10px/1.6 Arial, sans-serif; letter-spacing: .22em; color: #b2cadc; }
+.cinema .about-story h1, .about-story h2 { font-family: Georgia, 'Times New Roman', serif; color: #f0f4f6; font-size: clamp(40px, 5.2vw, 72px); font-weight: 400; line-height: 1.12; letter-spacing: -.04em; margin: 0 0 30px; }
+.about-story h2 { font-size: clamp(34px, 4.3vw, 58px); }
+.about-body { max-width: 540px; font-size: clamp(16px, 1.5vw, 19px); color: #d4dfe7; line-height: 1.85; margin: 0 0 30px; }
+.about-meta { color: #b3c9d9; font-size: 14px; line-height: 1.8; margin: 0 0 24px; }
+.about-tagline { max-width: 480px; color: #adc7d9; font-size: 10px; line-height: 1.9; letter-spacing: .17em; margin: 35px 0; }
+.about-scroll-link { display: inline-flex; gap: 30px; color: #d4e2eb; font-size: 12px; text-decoration: none; padding: 14px 0; border-bottom: 1px solid #a6bdcd55; }
+.about-experience { list-style: none; padding: 0; margin: 35px 0 0; color: #d4dfe7; }
+.about-experience li { padding: 13px 0; border-top: 1px solid #a6bdcd24; font-size: 16px; line-height: 1.6; }
+.about-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin: 50px 0 0; }
+.about-metrics dt { color: #eff5f8; font-size: clamp(30px, 3.6vw, 48px); }
+.about-metrics dd { color: #b6cad9; line-height: 1.6; font-size: 12px; margin: 10px 0 0; }
+.about-progress { position: fixed; top: 50%; right: 5vw; transform: translateY(-50%); z-index: 2; color: #b6cbdc; font-size: 10px; text-align: center; }
+.about-progress p { font-variant-numeric: tabular-nums; letter-spacing: .14em; }
+.about-progress ol { list-style: none; margin: 20px 0; padding: 0; display: grid; gap: 4px; justify-content: center; }
+.about-progress a { display: grid; place-items: center; width: 36px; height: 36px; }
+.about-progress a span { height: 19px; width: 2px; background: #a4bed044; transition: background .3s ease; }
+.about-progress a[aria-current=step] span { background: #edf6fc; }
+.about-progress-title { display: block; min-width: 80px; letter-spacing: .08em; }
+.about-story[data-motion=on] .about-chapter-copy { opacity: .18; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+.about-story[data-motion=on] .is-revealed .about-chapter-copy { opacity: 1; transform: none; }
+html:has(.about-story) { scroll-behavior: smooth; }
+@media (max-width: 700px) {
+  .about-city-far { display: none; }
+  .about-city-middle { transform: translate3d(0, calc(var(--story-progress) * -5vh), 0); }
+  .about-city-near { transform: translate3d(0, calc(var(--story-progress) * -9vh), 0); }
+  .about-chapter { padding: 64px 0 100px; min-height: 94svh; }
+  .about-chapter:first-of-type { min-height: calc(100svh - 160px); }
+  .about-chapter-label { margin-bottom: 24px; font-size: 9px; }
+  .about-progress { top: auto; bottom: 10px; right: 16px; transform: none; display: flex; align-items: center; gap: 8px; padding: 2px 8px; background: #0b1729e8; border: 1px solid #7f9ca02b; }
+  .about-progress p { font-size: 9px; }
+  .about-progress ol { display: flex; gap: 0; margin: 0; }
+  .about-progress a { width: 26px; height: 36px; }
+  .about-progress a span { width: 12px; height: 2px; }
+  .about-progress-title { display: none; }
+  .about-metrics { gap: 16px; }
+  .about-metrics dd { font-size: 11px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-city-layer { transform: none !important; will-change: auto; }
+  .about-city-light { opacity: .85; }
+  .about-chapter-copy { opacity: 1 !important; transform: none !important; transition: none !important; }
+  html:has(.about-story) { scroll-behavior: auto; }
+}

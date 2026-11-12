@@ -1,0 +1,23 @@
+.site-header-space { flex-shrink: 0; height: calc(80px + env(safe-area-inset-top)); }
+.site-header { position: fixed; inset: 0 0 auto; z-index: 30; min-height: 80px; padding: max(16px, env(safe-area-inset-top)) 5vw 16px; border: 0; background: transparent; box-shadow: none; backdrop-filter: none; text-shadow: 0 1px 3px #07121fee, 0 0 6px #07121f99; }
+.site-header .sound-control, .site-header .text-control { background: transparent; border: 0; box-shadow: none; text-shadow: inherit; }
+.site-header .wordmark { flex-shrink: 0; white-space: nowrap; }
+.site-header .header-controls { gap: 14px; }
+.site-desktop-nav { display: flex; align-items: center; gap: clamp(14px, 2vw, 32px); }
+.site-header nav a { color: #bdcfdd; font-size: 10px; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase; text-decoration: none; padding: 12px 0; }
+.site-header nav a:hover, .site-header nav a[aria-current=page] { color: #fff; }
+.site-header nav a[aria-current=page] { text-decoration: underline; text-underline-offset: 7px; }
+.site-mobile-menu { display: none; }
+.cinema[data-section][data-mobile] { height: auto; min-height: 100svh; overflow: clip; }
+@media (max-width: 1000px) {
+  .site-desktop-nav { display: none; }
+  .site-mobile-menu { display: block; }
+  .site-mobile-menu summary { padding: 12px 8px; min-height: 44px; font-size: 11px; cursor: pointer; color: #e0e8ec; }
+  .site-mobile-menu nav { position: absolute; top: 100%; right: 0; left: 0; max-height: 65svh; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; padding: 16px 7vw 24px; background: #172a3a; }
+  .site-mobile-menu nav a { min-height: 44px; }
+  .site-header { gap: 12px; padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+  .site-header .header-controls { gap: 8px; }
+  .site-header .wordmark { font-size: 9px; letter-spacing: .1em; }
+  .site-header .wordmark i { margin: 0 3px; }
+  .site-header .sound-control { padding: 8px; }
+}

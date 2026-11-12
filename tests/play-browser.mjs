@@ -109,9 +109,9 @@ try {
   await modes(); await back()
   await play(); await until("document.querySelector('.play-intro-video')?.currentTime > 0")
   await page.evaluate("document.querySelector('[aria-label=\"Unmute audio\"]').click()")
-  await until("document.querySelector('audio')?.muted === false")
-  assert.equal(await page.evaluate("document.querySelector('.play-intro-video').muted"), true)
-  await back(); await play(); await until("document.querySelector('audio')?.muted === false")
+  await until("document.querySelector('.play-intro-video')?.muted === false")
+  assert.equal(await page.evaluate("document.querySelector('audio').paused"), true)
+  await back(); await play(); await until("document.querySelector('.play-intro-video')?.muted === false")
   await back()
   console.log('Real video completion waits for destination, muted default, explicit audio consent and mute preference retention passed')
 

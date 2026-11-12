@@ -5,13 +5,13 @@ import { createHash } from 'node:crypto'
 import { AnimationMixer, Box3, Matrix4, Vector3 } from 'three'
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js'
 
-const path = process.argv[2] ?? 'asset-source/runner/runner-candidate.glb'
+const path = process.argv[2] ?? 'public/assets/characters/runner/runner.glb'
 const bytes = await fs.readFile(path)
 assert.equal(bytes.toString('ascii', 0, 4), 'glTF')
 assert.equal(bytes.readUInt32LE(4), 2)
 assert.equal(bytes.readUInt32LE(8), bytes.length)
 const json = JSON.parse(bytes.toString('utf8', 20, 20+bytes.readUInt32LE(12)))
-assert.deepEqual([...json.animations.map(a=>a.name)].sort(), ['Idle','Jump','Land','Run'])
+assert.deepEqual([...json.animations.map(a=>a.name)].sort(), ['Idle','Jump','Land','Run','Slide'])
 assert.equal(json.skins.length, 1)
 assert.equal(json.skins[0].joints.length, 65)
 assert.equal(json.meshes.length, 1)

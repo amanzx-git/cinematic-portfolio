@@ -1,0 +1,66 @@
+import test from 'node:test'
+import assert from 'node:assert/strict'
+import {Simulation,STEP} from '../src/game/simulation.ts'
+import {GameSession} from '../src/game/session.ts'
+
+test('ready state waits for an explicit Start and rejects movement input',()=>{
+  const sim=new Simulation(),session=new GameSession(sim)
+  assert.equal(session.screen,'ready');assert.equal(session.canMove,false);assert.equal(session.canPause,false)
+  sim.requestJump();sim.requestSlide()
+  assert.equal(sim.jumpQueued,false);assert.equal(sim.slideQueued,false)
+  assert.equal(sim.timer,.65);assert.equal(sim.x,0)
+  session.start()
+  assert.equal(session.screen,'playing');assert.equal(sim.phase,'running');assert.equal(sim.timer,0)
+  sim.advance(STEP)
+  assert.equal(sim.x,4.5*STEP)
+  session.start()
+  assert.equal(sim.x,4.5*STEP)
+})
+test('pause/resume clears queued input and preserves simulation state',()=>{
+  const sim=new Simulation(),session=new GameSession(sim)
+  session.start();sim.requestJump()
+  session.togglePause()
+  assert.equal(session.screen,'paused');assert.equal(session.canMove,false);assert.equal(sim.jumpQueued,false)
+  session.togglePause()
+  assert.equal(session.screen,'playing');assert.equal(session.canMove,true)
+})
+test('manual restart before Start stays ready and paused restart stays paused',()=>{
+  const sim=new Simulation(),session=new GameSession(sim)
+  session.restart()
+  assert.equal(session.started,false);assert.equal(session.screen,'ready')
+  session.start();session.togglePause();session.restart()
+  assert.equal(session.screen,'paused');assert.equal(sim.phase,'ready');assert.equal(sim.x,0)
+  session.togglePause();assert.equal(session.screen,'resetting')
+  for(let i=0;i<79;i++)sim.advance(STEP)
+  assert.equal(session.screen,'playing')
+})
+test('failure preserves the 1.1 second automatic restart and existing ready recovery',()=>{
+  const sim=new Simulation(),session=new GameSession(sim)
+  session.start()
+  while(sim.phase!=='fallen')sim.advance(STEP)
+  assert.equal(session.screen,'failed');assert.equal(session.canPause,false)
+  session.togglePause();assert.equal(session.paused,false)
+  for(let i=0;i<131;i++)sim.advance(STEP)
+  assert.equal(session.screen,'failed')
+  sim.advance(STEP*2)
+  assert.equal(sim.restarts,1);assert.equal(session.screen,'resetting')
+  for(let i=0;i<79;i++)sim.advance(STEP)
+  assert.equal(session.screen,'playing')
+})
+test('finish excludes failure and pause UI and Replay starts a clean run immediately',()=>{
+  const sim=new Simulation(),session=new GameSession(sim)
+  session.start()
+  sim.phase='finished';sim.failure='fall'
+  assert.equal(session.screen,'complete');assert.equal(session.canMove,false);assert.equal(session.canPause,false)
+  session.togglePause();assert.equal(session.screen,'complete')
+  session.replay()
+  assert.equal(session.screen,'playing');assert.equal(sim.x,0);assert.equal(sim.failure,null)
+  assert.equal(sim.restarts,1);assert.equal(sim.phase,'running')
+  sim.advance(STEP);assert.equal(sim.x,4.5*STEP)
+})
+test('debug high drop starts the isolated test and returns input ownership to gameplay',()=>{
+  const sim=new Simulation(),session=new GameSession(sim)
+  session.testHighDrop()
+  assert.equal(session.started,true);assert.equal(session.paused,false);assert.equal(session.screen,'playing')
+  assert.equal(sim.grounded,false);assert.equal(sim.y,3)
+})

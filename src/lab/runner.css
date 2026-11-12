@@ -1,0 +1,13 @@
+.runner-lab { color: #e1eaf2; background: #101822; min-height: 100vh; padding: 24px; font: 15px/1.5 system-ui, sans-serif; box-sizing: border-box; }
+body:has(.runner-lab) { margin: 0; }
+.runner-lab header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.runner-lab h1 { font-size: 24px; margin: 0; }
+.runner-lab a { color: #9bcaff; }
+.runner-viewport { height: min(60vh, 620px); min-height: 300px; border: 1px solid #465b70; }
+.runner-lab fieldset { display: flex; flex-wrap: wrap; gap: 12px; margin: 14px 0; border: 1px solid #465b70; }
+.runner-lab button, .runner-lab input { font: inherit; }
+.runner-lab button { padding: 6px 14px; cursor: pointer; }
+.runner-lab button[aria-pressed=true] { outline: 3px solid #77b8ff; }
+.runner-lab input[type=number] { width: 65px; }
+.runner-lab label { display: flex; align-items: center; gap: 8px; }
+.runner-lab output { display: block; min-height: 3em; font-family: monospace; }

@@ -117,3 +117,19 @@
 .cinematic-loading progress::-moz-progress-bar { background: #d2bc9a; }
 .cinematic-skip { animation: shadow-options .25s ease both; }
 @media (prefers-reduced-motion: reduce) { .cinematic-skip { animation: none; } }
+
+.mode-recruiter[href] { color: inherit; text-decoration: none; }
+
+/* Destination treatment applies after the cinematic has revealed selection. */
+.play-experience[data-transition=ready] .mode-selection { position: relative; --story-progress: 0; }
+.play-experience[data-transition=ready] .mode-selection h2 { text-wrap: balance; line-height: 1.1; }
+.play-experience[data-transition=ready] .mode-list { background: linear-gradient(110deg, #13283bd9, #13283b44); border-top-color: #b2cadc66; box-shadow: -16px 16px 0 #09152233; transform: translateY(calc(var(--story-progress) * -8px)); }
+.play-experience[data-transition=ready] .mode-option { padding-left: 18px; padding-right: 18px; }
+.play-experience[data-transition=ready] .mode-recruiter:hover { background: #35536b99; }
+.play-experience[data-transition=ready] .mode-option h3 { letter-spacing: -.02em; }
+.mode-selection[data-motion=on] [data-story-chapter] { opacity: .3; transition: opacity .4s; }
+.mode-selection[data-motion=on] .is-revealed, .mode-selection[data-motion=on] [data-story-chapter]:focus-within { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .play-experience[data-transition=ready] .mode-list { transform: none; }
+  .mode-selection[data-motion=on] [data-story-chapter] { opacity: 1; transition: none; }
+}

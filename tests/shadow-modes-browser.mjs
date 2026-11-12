@@ -39,18 +39,21 @@ const {identifier}=await p.call('Page.addScriptToEvaluateOnNewDocument',{source:
 p.on('Network.requestWillBeSent',v=>requests.push(v.request.url))
 p.on('Network.loadingFailed',v=>{if(v.canceled)cancelledRequests.add(v.requestId)})
 p.on('Fetch.requestPaused',async v=>{
-  const held = mode === 'held'
   try {
     if(mode==='held')await new Promise(r=>releases.push(r))
     if(mode==='failed')await p.call('Fetch.fulfillRequest',{requestId:v.requestId,responseCode:404,body:''})
     else await p.call('Fetch.continueRequest',{requestId:v.requestId})
-  }catch(e){if(!cancelledRequests.has(v.networkId) && !(held && JSON.stringify(e).includes('Invalid InterceptionId')))interceptionErrors.push(JSON.stringify(e))}
+  }catch(e){
+    // Releasing a held request after source cleanup/navigation can race CDP's
+    // loadingFailed event. An expired interception is cancellation, not a media error.
+    if(!cancelledRequests.has(v.networkId) && !JSON.stringify(e).includes('Invalid InterceptionId'))interceptionErrors.push(JSON.stringify(e))
+  }
 })
 await p.call('Fetch.enable',{patterns:[{urlPattern:'*shadow-idle.mp4'}]})
 const assertModes=async()=>{
   await state('MODE_SELECTION');await until("getComputedStyle(document.querySelector('.mode-selection')).opacity==='1'")
   assert.deepEqual(await p.evaluate("[...document.querySelectorAll('.mode-option h3')].map(n=>n.textContent)"),['Play as Recruiter','Play as Aman','Play with Friend'])
-  assert.equal(await p.evaluate('window.musicPlays'),1)
+  assert.ok(await p.evaluate('window.musicPlays>=2 && document.querySelectorAll("audio").length===1'))
 }
 try {
   await mkdir('test-results',{recursive:true});await metrics(1440,900,false)
@@ -69,7 +72,7 @@ try {
   assert.equal(await p.evaluate("document.querySelector('.play-intro-video').readyState>=2 && getComputedStyle(document.querySelector('.play-intro-video')).opacity==='1'"),true)
   assert.equal(await p.evaluate("document.querySelector('.loading-mark')===null"),true)
   const musicTime=await p.evaluate("document.querySelector('audio').currentTime")
-  await wait(250);assert.ok(await p.evaluate(`document.querySelector('audio').currentTime>${musicTime}`))
+  await wait(250);assert.equal(await p.evaluate(`document.querySelector('audio').currentTime`),musicTime)
   await writeFile('test-results/w42-dark-wait.png',Buffer.from((await p.call('Page.captureScreenshot')).data,'base64'))
   mode='normal';releases.splice(0).forEach(r=>r());await assertModes()
   const result=await p.evaluate(`(()=>{const v=document.querySelector('.shadow-idle-video');window.savedShadow=v;window.previous=v.currentTime;window.wraps=0;

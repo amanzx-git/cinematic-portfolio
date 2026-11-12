@@ -20,6 +20,8 @@ export function SceneCanvas({ graphics, cap, children }: { graphics: Graphics; c
     root.current = sceneRoot
     const resize = () => {
       const bounds = container.getBoundingClientRect()
+      // ResizeObserver can report zero after detachment, before R3F's delayed unmount.
+      if (bounds.width <= 0 || bounds.height <= 0) return
       void sceneRoot.configure({
         gl: graphics.renderer,
         events,

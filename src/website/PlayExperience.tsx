@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import type { ComponentType } from 'react'
+import type { ComponentType, RefObject } from 'react'
+import type { BackgroundMusic } from './backgroundMusic'
 import { ShadowBackground } from './ShadowBackground'
 import './play.css'
 
@@ -7,7 +8,9 @@ export type PlayStage = 'PLAY_INTRO' | 'MODE_SELECTION'
 const captions = ['A new perspective.', 'One step at a time.', 'Choose your next move.']
 type Transition = 'intro' | 'darkening' | 'waiting' | 'revealing' | 'ready'
 
-export function PlayExperience({ stage, onStageChange, onBack, source, reduced, paused = false }: {
+export function PlayExperience({ stage, onStageChange, onBack, source, reduced, paused = false, audioController, onPresented }: {
+  onPresented?: () => void
+  audioController: RefObject<BackgroundMusic | null>
   stage: PlayStage
   onStageChange: (stage: PlayStage) => void
   onBack: () => void
@@ -17,28 +20,33 @@ export function PlayExperience({ stage, onStageChange, onBack, source, reduced, 
 }) {
   const [Destination, setDestination] = useState<ComponentType | null>(null)
   const [loadError, setLoadError] = useState(false)
-  const [finished, setFinished] = useState(false)
+  const [finished, setFinished] = useState(stage === 'MODE_SELECTION')
   const [failedVideo, setFailedVideo] = useState(false)
   const [caption, setCaption] = useState(0)
   const [videoReady, setVideoReady] = useState(false)
-  const [transition, setTransition] = useState<Transition>('intro')
+  const [transition, setTransition] = useState<Transition>(stage === 'MODE_SELECTION' ? 'ready' : 'intro')
   const [shadowReady, setShadowReady] = useState(false)
   const [shadowFailed, setShadowFailed] = useState(false)
   const requested = useRef(false)
   const requestModes = useCallback(() => {
     if (requested.current) return
     requested.current = true
+    audioController.current?.silenceIntro()
     setFinished(true)
-  }, [])
+  }, [audioController])
   const heading = useRef<HTMLElement>(null)
   const video = useRef<HTMLVideoElement>(null)
   const hasVideo = !!source && !failedVideo && !reduced
-  const showIntroLayer = hasVideo && transition !== 'ready'
+  const showIntroLayer = stage === 'PLAY_INTRO' && hasVideo && transition !== 'ready'
   const showingVideo = hasVideo && !finished && stage === 'PLAY_INTRO'
 
   const resourcesReady = !!Destination && (shadowReady || shadowFailed || reduced)
   const readyMilestones = Number(!!Destination) + Number(shadowReady || shadowFailed || reduced)
+  useEffect(() => {
+    if (stage === 'MODE_SELECTION' && (resourcesReady || loadError)) onPresented?.()
+  }, [stage, resourcesReady, loadError, onPresented])
 
+  useEffect(() => { if (stage === 'PLAY_INTRO' && (videoReady || !hasVideo)) onPresented?.() }, [stage, videoReady, hasVideo, onPresented])
   useEffect(() => { if (reduced) setShadowReady(false) }, [reduced])
 
   useEffect(() => {
@@ -90,10 +98,9 @@ export function PlayExperience({ stage, onStageChange, onBack, source, reduced, 
     if (!element || !showingVideo) return
     if (paused) { element.pause(); return }
     let active = true
-    element.muted = true
-    element.play().catch(() => { if (active) setFailedVideo(true) })
-    return () => { active = false; element.pause() }
-  }, [showingVideo, paused])
+    audioController.current?.playIntro(element).catch(() => { if (active) setFailedVideo(true) })
+    return () => { active = false; audioController.current?.detachIntro(element) }
+  }, [showingVideo, paused, audioController])
   useEffect(() => {
     const element = video.current
     if (!showingVideo || paused || !element) return
@@ -112,7 +119,7 @@ export function PlayExperience({ stage, onStageChange, onBack, source, reduced, 
   return <section className="play-experience" data-transition={transition} ref={heading} tabIndex={-1} aria-labelledby="play-title"
     onKeyDown={event => { if (event.key === 'Escape') onBack() }}>
     {/* Retain the outgoing frame until the shadow transition finishes. */}
-    {showIntroLayer && <video className={`play-intro-video ${videoReady && (transition === 'intro' || transition === 'darkening') ? 'is-visible' : ''}`} ref={video} src={source!} muted
+    {showIntroLayer && <video className={`play-intro-video ${videoReady && (transition === 'intro' || transition === 'darkening') ? 'is-visible' : ''}`} ref={video} src={source!}
       playsInline preload="auto" poster="/media/website/city-poster.svg" aria-hidden="true"
       onLoadedData={() => setVideoReady(true)}
       onEnded={requestModes} onError={() => setFailedVideo(true)} />}

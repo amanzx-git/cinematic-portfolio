@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { writeFile } from 'node:fs/promises'
 import { connect } from './cdp.mjs'
-const pages = await (await fetch('http://127.0.0.1:9224/json')).json()
+const pages = await (await fetch(`http://127.0.0.1:${process.env.DEBUG_PORT ?? 9224}/json`)).json()
 const p = await connect(pages.find(p => p.type === 'page').webSocketDebuggerUrl)
 const wait = ms => new Promise(r => setTimeout(r, ms))
 const until = async expr => { for(let i=0;i<300;i++) { if(await p.evaluate(`!!(${expr})`)) return; await wait(50) } throw Error(expr) }

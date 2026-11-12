@@ -1,0 +1,80 @@
+body:has(.game-lab) { margin: 0; background: #080f19; }
+.game-lab { color: #ecf1f6; box-sizing: border-box; height: 100dvh; min-height: 320px; display: flex; flex-direction: column; font: 14px/1.4 system-ui, sans-serif; position: relative; }
+.game-lab *, .game-lab *::before, .game-lab *::after { box-sizing: border-box; }
+.game-lab button, .game-lab a { font: inherit; color: inherit; }
+.game-lab button { cursor: pointer; border: 1px solid #536273; background: #101d2b; border-radius: 3px; min-height: 44px; padding: 10px 18px; touch-action: manipulation; }
+.game-lab button:disabled { opacity: .35; cursor: default; }
+.game-lab a { text-decoration: none; }
+.game-lab a:hover { color: #dfbb80; }
+.game-lab :focus-visible { outline: 2px solid #e0b97f; outline-offset: 4px; }
+.game-hud { min-height: 66px; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 10px 28px; }
+.game-level { display: flex; align-items: center; gap: 24px; }
+.game-level h1 { font-size: 14px; font-weight: 500; letter-spacing: .04em; margin: 0; }
+.game-level progress { width: 160px; height: 3px; border: 0; border-radius: 0; background: #253445; appearance: none; }
+.game-level progress::-webkit-progress-bar { background: #253445; }
+.game-level progress::-webkit-progress-value { background: #c6ad86; }
+.game-level progress::-moz-progress-bar { background: #c6ad86; }
+.game-hud nav { display: flex; align-items: center; gap: 10px; }
+.game-hud nav button { border-color: transparent; background: transparent; padding: 8px 12px; }
+.game-hud nav a { padding: 10px 12px; }
+.game-stage { flex: 1; min-height: 190px; position: relative; overflow: hidden; margin: 0 12px; border: 1px solid #2c4052; }
+.game-stage:focus { outline: none; }
+.game-stage::after { content: ""; position: absolute; inset: 0; pointer-events: none; box-shadow: inset 0 0 24px 8px #b1785d; opacity: var(--impact-opacity, 0); }
+.game-loading { padding: 24px; color: #b3c2cf; }
+.game-bottom { min-height: 72px; padding: 10px 24px 10px 88px; display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.game-play-hints { font-size: 11px; color: #a7b4c1; display: flex; gap: 8px; align-items: center; }
+.game-lab kbd { font: inherit; color: #e2e7ec; }
+.game-controls { display: flex; gap: 12px; margin-left: auto; }
+.game-controls button { min-width: 94px; background: #142435; border-color: #3d5368; touch-action: none; }
+.game-controls .game-sprint[data-held="true"] { border-color: #cfb587; color: #f1d9ae; background: #29313a; }
+.game-lab[data-sprinting="true"] .game-sprint-hint { color: #f1d9ae; }
+.game-controls button:first-child { border-color: #9e8b6e; }
+.game-overlay { position: absolute; inset: 0; z-index: 2; display: grid; align-items: center; justify-items: end; padding: clamp(18px, 5vw, 72px); background: linear-gradient(90deg, transparent 30%, #080f19b8); pointer-events: auto; }
+.game-panel { pointer-events: auto; width: min(360px, 100%); padding: 24px; background: #0c1723ed; border: 1px solid #405164; border-top: 2px solid #b69a70; box-shadow: 0 16px 60px #03080f66; }
+.game-panel h2 { margin: 0 0 12px; font-size: clamp(24px, 3vw, 34px); font-weight: 400; letter-spacing: -.035em; }
+.game-panel p { color: #b3c0cc; margin: 8px 0; font-size: 13px; }
+.game-panel .game-route-hint { margin: 16px 0 20px; color: #8498aa; font-size: 11px; }
+.game-panel-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 24px; }
+.game-lab .game-primary { background: #d9c4a1; border-color: #d9c4a1; color: #14202b; min-width: 108px; }
+.game-panel-actions a { padding: 12px; font-size: 13px; }
+.game-touch-hints { display: none; }
+.game-failure { position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); padding: 10px 22px; background: #0b1523e8; border-left: 2px solid #ba916a; pointer-events: none; text-align: center; }
+.game-failure span, .game-failure small { display: block; }
+.game-failure small { font-size: 11px; color: #9faebb; margin-top: 3px; }
+.game-debug { position: absolute; bottom: 25px; left: 24px; z-index: 4; font-size: 11px; color: #9eafbf; }
+.game-debug summary { cursor: pointer; padding: 6px 0; }
+.game-debug-panel { position: absolute; bottom: 36px; left: 0; width: min(640px, calc(100vw - 48px)); max-height: 46vh; overflow: auto; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; background: #0b1528f5; border: 1px solid #42546b; padding: 16px; box-shadow: 0 12px 30px #0005; }
+.game-debug:not([open]) .game-debug-panel { display: none; }
+.game-debug-panel output { width: 100%; font: 11px/1.5 ui-monospace, monospace; overflow-wrap: anywhere; color: #a8bacb; }
+.game-debug-panel button { padding: 6px 10px; min-height: 36px; }
+@media (pointer: coarse) {
+ .game-keyboard-hints { display: none; }
+ .game-touch-hints { display: block; }
+}
+@media (max-height: 500px) and (orientation: landscape) {
+ .game-hud { min-height: 46px; padding: 2px 16px; }
+ .game-level { gap: 14px; }
+ .game-level h1 { font-size: 12px; }
+ .game-level progress { width: 90px; }
+ .game-hud nav { gap: 2px; }
+ .game-hud nav button, .game-hud nav a { padding: 8px 10px; }
+ .game-bottom { min-height: 54px; padding: 4px 16px 4px 72px; }
+ .game-controls { gap: 8px; }
+ .game-controls button { padding: 8px 12px; min-width: 78px; }
+ .game-overlay { padding: 12px 28px; }
+ .game-panel { width: 310px; padding: 16px 20px; }
+ .game-panel h2 { font-size: 25px; margin-bottom: 6px; }
+ .game-panel p { font-size: 11px; margin: 5px 0; }
+ .game-panel .game-route-hint { margin: 9px 0; }
+ .game-panel-actions { margin-top: 12px; }
+ .game-debug { bottom: 14px; left: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ .game-lab *, .game-lab *::before, .game-lab *::after { scroll-behavior: auto; animation: none; transition: none; }
+}
+
+.game-hud[inert], .game-bottom[inert], .game-debug[inert] { opacity: .4; }
+.game-lab:not([data-screen="playing"]) .game-play-hints { visibility: hidden; }
+.game-stage:focus-visible { outline: 1px solid #768798; outline-offset: -2px; }
+
+.game-hud nav a, .game-panel-actions a { display: inline-flex; align-items: center; min-height: 44px; }
